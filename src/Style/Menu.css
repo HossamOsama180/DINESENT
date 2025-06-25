@@ -1,0 +1,36 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.head {
+    font-size: 50px; /* قلل الحجم لو كبير قوي */
+    margin: 0; /* يشيل أي margin افتراضي */
+    padding: 0;}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.image-menu{
+    border-radius: 15px;
+    width: 300px;
+}
+.item a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+.menu-type {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    flex-wrap: wrap;
+}
+
+
