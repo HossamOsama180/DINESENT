@@ -17,6 +17,8 @@ import CheckOut from './pages/CheckOut'
 import Payment from './pages/Payment'
 import Track from './pages/Track'
 import Follow from './pages/Follow'
+import ForgetPassword from './pages/forgot-password'
+import Addresses from './pages/Addresses'
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
             <Route path='/Payment' element={<Payment />}/>
             <Route path='/track' element={<Track />}/>
             <Route path='/follow' element={<Follow />}/>
+            <Route path='/forgot-password' element={<ForgetPassword />}/>
+            <Route path='/addresses' element={<Addresses />}/>
           </Routes>
         </BrowserRouter>
     </>

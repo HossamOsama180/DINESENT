@@ -6,6 +6,8 @@ import { VscFeedback } from 'react-icons/vsc';
 import { FaShippingFast, FaUserEdit } from 'react-icons/fa';
 import { FaCartShopping } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import { FaAddressCard } from "react-icons/fa6";
+
 
 const Profile = () => {
     const user = useSelector((state) => state.user.currentUser);
@@ -46,6 +48,12 @@ const Profile = () => {
                     <div> <VscFeedback />
                         <Link to="/contact" style={{ textDecoration: "none" }}>
                             <h6 className='h6'>Give Feedback</h6>
+
+                        </Link>
+                    </div>
+                    <div> <FaAddressCard />
+                        <Link to="/addresses" style={{ textDecoration: "none" }}>
+                            <h6 className='h6'>addresses</h6>
 
                         </Link>
                     </div>
