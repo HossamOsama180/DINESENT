@@ -14,7 +14,7 @@ const Banner = () => {
                         <Link to="/Menuu" >
                             <button className='btns'>View Our Menu</button>
                         </Link>
-                        <Link>
+                        <Link to="/customize">
                             <button className='btns'>Customize Your Order</button>
                         </Link>
                     </div>

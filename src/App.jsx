@@ -19,6 +19,7 @@ import Track from './pages/Track'
 import Follow from './pages/Follow'
 import ForgetPassword from './pages/forgot-password'
 import Addresses from './pages/Addresses'
+import Customize from './pages/Customize'
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path='/follow' element={<Follow />}/>
             <Route path='/forgot-password' element={<ForgetPassword />}/>
             <Route path='/addresses' element={<Addresses />}/>
+            <Route path='/customize' element={<Customize />}/>
           </Routes>
         </BrowserRouter>
     </>

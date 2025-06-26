@@ -6,33 +6,24 @@ import { addToCart } from "../store/cartSlice";
 const Drink = () => {
 
 
-   const [dessertItems, setDessertItems] = useState([{}]);
-      const dispatch = useDispatch();
-  
-  
-      // useEffect(() => {
-  
-      //     fetch('http://localhost:8000/api/category_dishes')
-      //         .then(res => res.json())
-      //         .then(data => {
-      //             setDessertItems(data.category_dishes)
-      //             console.log(data);
-      //         })
-      // }, [])
+    const [dessertItems, setDessertItems] = useState([{}]);
+    const dispatch = useDispatch();
 
-      useEffect(() => {
-    fetch('http://localhost:8000/api/category_dishes')
-        .then(res => res.json())
-        .then(data => {
-            setDessertItems(data.category_dishes); // حسب شكل الريسبونس
-            console.log(data);
-        })
-        .catch(error => console.error("Fetch error:", error));
-}, []);
 
-  return (
-    <div>
-       <NavBar />
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/category_dishes')
+            .then(res => res.json())
+            .then(data => {
+                setDessertItems(data.category_dishes); // حسب شكل الريسبونس
+                console.log(data);
+            })
+            .catch(error => console.error("Fetch error:", error));
+    }, []);
+
+    return (
+        <div>
+            <NavBar />
 
             <div className="cards-container">
                 {dessertItems.map((item) => (
@@ -58,9 +49,9 @@ const Drink = () => {
                     </div>
                 ))}
             </div>
-      
-    </div>
-  )
+
+        </div>
+    )
 }
 
 export default Drink
