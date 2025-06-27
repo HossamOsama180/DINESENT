@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -19,12 +20,37 @@ const Login = () => {
             email: Yup.string().email('Invalid email').required('Email is required'),
             password: Yup.string().required('Password is required'),
         }),
-        onSubmit: (values, { resetForm }) => {
-            console.log(values);
-            dispatch(login({ email: values.email }));
-            alert('Form submitted!');
+        onSubmit: async (values, { resetForm }) => {
+            try {
+                const res = await fetch('http://127.0.0.1:8000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(values)
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    // تخزين التوكن
+                    localStorage.setItem('token', data.token);
+
+                    // إرسال البيانات لـ Redux
+                    dispatch(login({ email: values.email }));
+
+                    // توجيه المستخدم
+                    navigate('/');
+                } else {
+                    alert(data.message || 'Login failed. Check your credentials.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Something went wrong while logging in.');
+            }
+
             resetForm();
-            navigate('/');
         }
     });
 
@@ -68,4 +94,3 @@ const Login = () => {
 };
 
 export default Login;
-

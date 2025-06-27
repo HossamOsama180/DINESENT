@@ -1,44 +1,58 @@
-import React from 'react'
-import NavBar from '../components/NavBar'
-import "../Style/Follow.css"
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import NavBar from '../components/NavBar';
+import "../Style/Follow.css";
+import { Link } from 'react-router-dom';
 
 const Follow = () => {
+    const [status, setStatus] = useState('');
+    const [orderId, setOrderId] = useState('');
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/delivery/orders', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'Accept': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (Array.isArray(data) && data.length > 0) {
+                setStatus(data[0].status);
+                setOrderId(data[0].id);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching order status:', error);
+        });
+    }, []);
+
+    const isCompleted = (step) => {
+        const stepsOrder = ['placed', 'preparing', 'shipped', 'delivered'];
+        return stepsOrder.indexOf(step) <= stepsOrder.indexOf(status);
+    };
+
     return (
         <div>
             <NavBar />
-
-            <div class="follow-container">
+            <div className="follow-container">
                 <h2>Info about your order</h2>
-                <p>Order #123RGR231567Y</p>
+                <p>Order #{orderId}</p>
 
-                <div class="progress-track">
-                    <div class="step completed">
-                        <div class="circle">✔</div>
-                        <p>placed</p>
-                    </div>
-                    <div class="step completed">
-                        <div class="circle">✔</div>
-                        <p>preparing</p>
-                    </div>
-                    <div class="step">
-                        <div class="circle"></div>
-                        <p>shipped</p>
-                    </div>
-                    <div class="step">
-                        <div class="circle"></div>
-                        <p>delivered</p>
-                    </div>
+                <div className="progress-track">
+                    {['placed', 'preparing', 'shipped', 'delivered'].map((step) => (
+                        <div className={`step ${isCompleted(step) ? 'completed' : ''}`} key={step}>
+                            <div className="circle">{isCompleted(step) ? '✔' : ''}</div>
+                            <p>{step}</p>
+                        </div>
+                    ))}
                 </div>
-                <Link to="/" style={{textDecoration:"none"}}>  
-                        <button class="back-home">back to home</button>
+
+                <Link to="/" style={{ textDecoration: "none" }}>
+                    <button className="back-home">back to home</button>
                 </Link>
             </div>
-
-
-
         </div>
-    )
-}
+    );
+};
 
-export default Follow
+export default Follow;

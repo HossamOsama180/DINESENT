@@ -29,7 +29,10 @@ const Profile = () => {
                 <div className='Profile-icons'>
                     <div>
                         <FaUserEdit />
-                        <h6 className='h6' >Edit Profile</h6>
+                        <Link to="/edit">
+                                <h6 className='h6' >Edit Profile</h6>
+
+                        </Link>
                     </div>
                     <div><FaCartShopping />
                         <Link to="/cart" style={{ textDecoration: "none" }}>

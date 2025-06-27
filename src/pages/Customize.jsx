@@ -17,6 +17,7 @@ const MealSuggestion = () => {
         fetch('http://127.0.0.1:8000/api/categories')
             .then(res => res.json())
             .then(data => {
+                
                 if (data.success && Array.isArray(data.categories)) {
                     const formatted = {};
                     data.categories.forEach(cat => {

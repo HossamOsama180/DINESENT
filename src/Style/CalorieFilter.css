@@ -103,9 +103,9 @@ button {
     margin-top: 10px;
 }
 
-button:hover {
+/* button:hover {
     background-color: #0056b3;
-}
+} */
 
 /* ========= نتائج الوجبات ========== */
 .meal-results {

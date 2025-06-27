@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar';
 import { useDispatch } from 'react-redux';
 import { addToCart } from "../store/cartSlice";
-import '../Style/Desert.css'; // 👈 استيراد CSS المخصص
+import "../Style/Soups.css"
 
-const Desserts = () => {
-    const [category, setCategory] = useState(null);
+const Soups = () => {
+
+
+    const [category, setCategory] = useState(null); // الكاتيجوري الواحد
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/categories/3') // 👈 تأكد إن id = 3 هو الحلويات
+        fetch('http://localhost:8000/api/categories/4')
             .then(res => res.json())
             .then(data => {
                 console.log("Fetched category data:", data);
-                setCategory(data.category);
+                setCategory(data.category); // 👈 هنا التعديل
                 setLoading(false);
             })
             .catch(err => {
@@ -23,24 +25,27 @@ const Desserts = () => {
             });
     }, []);
 
+
     if (loading) return <p>Loading...</p>;
     if (!category) return <p>No data found.</p>;
 
     return (
         <>
-            <NavBar />
-            <div className='desserts-page'>
-                <h3 className='desserts-title'>Dishes:</h3>
 
-                <div className='desserts-menu'>
+            <NavBar />
+
+            <div className="soups-page">
+                <h2 className="soups-title">{category.title}</h2>
+
+                <div className="soups-menu">
                     {category.category_dish && category.category_dish.length > 0 ? (
                         category.category_dish.map((dish, index) => (
-                            <div key={index} className="desserts-item">
+                            <div key={index} className="soups-item">
                                 <img src={dish.image_url} alt={dish.title} />
                                 <p><strong>{dish.title}</strong></p>
                                 <p>Price: {dish.price}</p>
                                 <button
-                                    className="desserts-add-to-cart"
+                                    className="soups-add-to-cart"
                                     onClick={() => dispatch(addToCart(dish))}
                                 >
                                     Add to Cart
@@ -52,8 +57,10 @@ const Desserts = () => {
                     )}
                 </div>
             </div>
+
+
         </>
     )
 }
 
-export default Desserts;
+export default Soups

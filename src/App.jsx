@@ -20,33 +20,43 @@ import Follow from './pages/Follow'
 import ForgetPassword from './pages/forgot-password'
 import Addresses from './pages/Addresses'
 import Customize from './pages/Customize'
+import Grills from './pages/Grills'
+import Appetizers from './pages/Appetizers'
+import Soups from './pages/Soups'
+import FastFood from './pages/FastFood'
+import Edit from './pages/Edit'
 
 function App() {
   return (
     <>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />}/>
-            <Route path='/Menuu' element={<Menuu />}/>
-            <Route path='/about' element={<AboutUs />}/>
-            <Route path='/contact' element={<ContactUs />}/>
-            <Route path='/register' element={<Regestration />}/>
-            <Route path='/Login' element={<Login />}/>
-            <Route path='/SingIN' element={<SignUp />}/>
-            <Route path='/desert' element={<Desert />}/>
-            <Route path='/cart' element={<Cart />}/>
-            <Route path='/drink' element={<Drink />}/>
-            <Route path='/food' element={<Food />}/>
-            <Route path='/Profile' element={<Profile />}/>
-            <Route path='/checkOut' element={<CheckOut />}/>
-            <Route path='/Payment' element={<Payment />}/>
-            <Route path='/track' element={<Track />}/>
-            <Route path='/follow' element={<Follow />}/>
-            <Route path='/forgot-password' element={<ForgetPassword />}/>
-            <Route path='/addresses' element={<Addresses />}/>
-            <Route path='/customize' element={<Customize />}/>
-          </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Menuu' element={<Menuu />} />
+          <Route path='/about' element={<AboutUs />} />
+          <Route path='/contact' element={<ContactUs />} />
+          <Route path='/register' element={<Regestration />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/SingIN' element={<SignUp />} />
+          <Route path='/desserts' element={<Desert />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/drink' element={<Drink />} />
+          <Route path='/food' element={<Food />} />
+          <Route path='/Profile' element={<Profile />} />
+          <Route path='/checkOut' element={<CheckOut />} />
+          <Route path='/Payment' element={<Payment />} />
+          <Route path='/track' element={<Track />} />
+          <Route path='/follow' element={<Follow />} />
+          <Route path='/forgot-password' element={<ForgetPassword />} />
+          <Route path='/addresses' element={<Addresses />} />
+          <Route path='/customize' element={<Customize />} />
+          <Route path='/Grills' element={<Grills />} />
+          <Route path='/Appetizers' element={<Appetizers />} />
+          <Route path='/Soups' element={<Soups />} />
+          <Route path='/fastfood' element={<FastFood />} />
+          <Route path='/edit' element={<Edit />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
